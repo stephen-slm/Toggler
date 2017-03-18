@@ -1,0 +1,55 @@
+{
+    "name": "toggler",
+    "displayName": "toggler",
+    "description": "Toggle words and symbols in VSCode using a user defined configuration.",
+    "version": "0.0.1",
+    "publisher": "tehstun",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.10.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tehstun/toggler"
+    },
+    "categories": [
+        "Formatters", "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.toggler"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "configuration": {
+            "properties": {
+                "toggler.words": {
+                    "type": "array",
+                    "default": [
+                        ["true", "false"],
+                        ["0", "1"]
+                    ],
+                    "description": "Custom word arrays which will be used in the matching process"
+                }
+            }
+        },
+        "keybindings": [{
+            "command": "extension.toggler",
+            "key": "alt+r",
+            "mac": "cmd+r",
+            "when": "editorTextFocus"
+        }],
+        "commands": [{
+            "command": "extension.toggler",
+            "title": "Toggler"
+        }]
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "eslint": "^3.6.0"
+    }
+}
