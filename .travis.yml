@@ -18,6 +18,7 @@ before_install:
 
 install:
   - npm install --only=dev
+  - npm run vscode:prepublish
 
 script:
   - npm test --silent
