@@ -5,7 +5,7 @@
 
 Toggle words and symbols in VSCODE allowing for user defined configuration (This is a ported version from [here](https://github.com/HiDeoo/toggler) for [Atom](https://atom.io/)).
 
-<img src="http://i.imgur.com/RPDDIWA.gif" width="500">
+<img src="http://i.imgur.com/w2khqrv.gif" width="200">
 
 ## Usage
 

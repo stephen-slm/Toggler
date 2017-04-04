@@ -18,11 +18,11 @@ import * as myExtension from '../src/extension';
 suite("VS-Toggler Tests", function() {
 
     test("Configuration should be a valid array of string words", () => {
-        const customWords = vscode.workspace.getConfiguration('toggler').get('words');
+        const customWords: any = vscode.workspace.getConfiguration('toggler').get('words');
 
         assert.equal(customWords.constructor, Array, 'Custom words in togger.words setting is not a valid array');
 
-        const builtWords = Object.assign(defaults, customWords);
+        const builtWords:[Array<string>] = customWords.concat(defaults);
         
         assert.equal(builtWords.constructor, Array, 'Fused defaults and user setting is not a valid array');
 

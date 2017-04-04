@@ -9,11 +9,11 @@ const defaults = require('./defaults.json');
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-    const customWords: {} = vscode.workspace.getConfiguration('toggler').get('words');
+    const customWords: any = vscode.workspace.getConfiguration('toggler').get('words');
 
     assert(customWords.constructor === Array, 'Custom words in togger.words setting is not a valid array');
 
-    const builtWords:[Array<string>] = Object.assign(defaults, customWords);
+    const builtWords:[Array<string>] = customWords.concat(defaults);
 
     console.log('vs-toggler is now active!');
 
