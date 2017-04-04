@@ -2,7 +2,7 @@
     "name": "toggler",
     "displayName": "toggler",
     "description": "Toggle words and symbols in VSCode using a user defined configuration.",
-    "version": "0.2.0",
+    "version": "0.3.1",
     "publisher": "tehstun",
     "license": "MIT",
     "engines": {
@@ -39,16 +39,20 @@
                 }
             }
         },
-        "keybindings": [{
-            "command": "extension.toggler",
-            "key": "alt+r",
-            "mac": "cmd+r",
-            "when": "editorTextFocus"
-        }],
-        "commands": [{
-            "command": "extension.toggler",
-            "title": "Toggler"
-        }]
+        "keybindings": [
+            {
+                "command": "extension.toggler",
+                "key": "alt+r",
+                "mac": "cmd+r",
+                "when": "editorTextFocus"
+            }
+        ],
+        "commands": [
+            {
+                "command": "extension.toggler",
+                "title": "Toggler"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
