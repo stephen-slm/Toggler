@@ -29,12 +29,13 @@ export function activate(context: vscode.ExtensionContext) {
 
        editor.edit((editing: vscode.TextEditorEdit) => {
            selections.forEach((selection) => {
-               const word: string = editor.document.getText(selection);
+               const wordRange = (selection.isEmpty) ? editor.document.getWordRangeAtPosition(selection.active) : selection;
+               const word = editor.document.getText(wordRange);
+               
                const replacementText: string = findReplacementText(word, builtWords);
-
                // Will not replace the word if word returned null or undefined
-                if(replacementText !== null || replacementText !== undefined) {
-                    editing.replace(selection, replacementText);
+                if(replacementText !== null && replacementText !== undefined) {
+                    editing.replace(wordRange, replacementText);
                 }
            });
        });
@@ -54,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function findReplacementText(incomingWords: string, switchableWords: [Array<string>]) {
 
     if(incomingWords.constructor !== String) {
-        return incomingWords;
+        return undefined;
     }
     
     for (var index: number = 0; index < switchableWords.length; index++) {
@@ -77,7 +78,7 @@ export function findReplacementText(incomingWords: string, switchableWords: [Arr
             }
         }
     }
-    return incomingWords;    
+    return undefined;    
 }
 
 /**
