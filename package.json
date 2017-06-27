@@ -2,7 +2,7 @@
     "name": "toggler",
     "displayName": "toggler",
     "description": "Toggle words and symbols in VSCode using a user defined configuration.",
-    "version": "0.3.1",
+    "version": "0.5.0",
     "publisher": "tehstun",
     "license": "MIT",
     "engines": {
