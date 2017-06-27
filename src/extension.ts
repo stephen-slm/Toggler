@@ -29,10 +29,10 @@ export function activate(context: vscode.ExtensionContext) {
 
        editor.edit((editing: vscode.TextEditorEdit) => {
            selections.forEach((selection) => {
-               const wordRange = (selection.isEmpty) ? editor.document.getWordRangeAtPosition(selection.active) : selection;
-               const word = editor.document.getText(wordRange);
-               
+               const wordRange: any = (selection.isEmpty) ? editor.document.getWordRangeAtPosition(selection.active) : selection;
+               const word: string = editor.document.getText(wordRange);
                const replacementText: string = findReplacementText(word, builtWords);
+
                // Will not replace the word if word returned null or undefined
                 if(replacementText !== null && replacementText !== undefined) {
                     editing.replace(wordRange, replacementText);
