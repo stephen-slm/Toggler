@@ -9,11 +9,11 @@ const defaults = require('./defaults.json');
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-    const customWords: any = vscode.workspace.getConfiguration('toggler').get('words');
+    const customWords: {} = vscode.workspace.getConfiguration('toggler').get('words');
 
     assert(customWords.constructor === Array, 'Custom words in togger.words setting is not a valid array');
 
-    const builtWords:[Array<string>] = customWords.concat(defaults);
+    const builtWords:[Array<string>] = Object.assign(defaults, customWords);
 
     console.log('vs-toggler is now active!');
 
@@ -29,13 +29,12 @@ export function activate(context: vscode.ExtensionContext) {
 
        editor.edit((editing: vscode.TextEditorEdit) => {
            selections.forEach((selection) => {
-               const wordRange: any = (selection.isEmpty) ? editor.document.getWordRangeAtPosition(selection.active) : selection;
-               const word: string = editor.document.getText(wordRange);
+               const word: string = editor.document.getText(selection);
                const replacementText: string = findReplacementText(word, builtWords);
 
                // Will not replace the word if word returned null or undefined
-                if(replacementText !== null && replacementText !== undefined) {
-                    editing.replace(wordRange, replacementText);
+                if(replacementText !== null || replacementText !== undefined) {
+                    editing.replace(selection, replacementText);
                 }
            });
        });
@@ -55,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function findReplacementText(incomingWords: string, switchableWords: [Array<string>]) {
 
     if(incomingWords.constructor !== String) {
-        return undefined;
+        return incomingWords;
     }
     
     for (var index: number = 0; index < switchableWords.length; index++) {
@@ -78,7 +77,7 @@ export function findReplacementText(incomingWords: string, switchableWords: [Arr
             }
         }
     }
-    return undefined;    
+    return incomingWords;    
 }
 
 /**
