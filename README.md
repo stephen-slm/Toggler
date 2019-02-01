@@ -3,6 +3,10 @@
 [![OS X Build Status](https://travis-ci.org/tehstun/toggler.svg?branch=master)](https://travis-ci.org/tehstun/toggler)
 [![Dependency Status](https://david-dm.org/tehstun/toggler.svg)](https://david-dm.org/tehstun/toggler)
 
+---
+THIS IS NO LONGER MAINTAINED, USE THE VSCODE VERSION OF THE BELOW ATOM EXTENSION [HERE](https://github.com/HiDeoo/toggler-vscode)
+---
+
 Toggle words and symbols in VSCODE allowing for user defined configuration (This is a ported version from [here](https://github.com/HiDeoo/toggler) for [Atom](https://atom.io/)).
 
 <img src="https://i.imgur.com/w2khqrv.gif" width="200">
